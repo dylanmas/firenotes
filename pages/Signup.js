@@ -1,7 +1,9 @@
+import { sendEmailVerification } from "@firebase/auth";
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import { app } from "../firebase/config";
+import InputField from "../components/InputField";
 const Styles = StyleSheet.create({
   Container: {
     flex: 1,
@@ -15,44 +17,24 @@ const Signup = () => {
   const [userName, SetUserName] = useState("");
   return (
     <View style={Styles.Container}>
-      <TextInput
+      <Text
         style={{
-          height: 40,
-          borderRadius: 10,
-          backgroundColor: "#FFFCE0",
-          width: "90%",
-          padding: 10,
-          color: "#504801",
-          fontSize: 20,
-          shadowColor: "#171717",
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.2,
-          shadowRadius: 3,
-          marginBottom: 10,
+          fontSize: 60,
+          fontWeight: "bold",
+          fontFamily: "AvenirNextCondensed-Medium",
         }}
-        placeholder="Username"
-        defaultValue={userName}
-        onChangeText={(e) => SetUserName(e)}
-      />
+      >
+        FireNotes
+      </Text>
 
-      <TextInput
-        style={{
-          height: 40,
-          borderRadius: 10,
-          backgroundColor: "#FFFCE0",
-          width: "90%",
-          padding: 10,
-          color: "#504801",
-          fontSize: 20,
-          shadowColor: "#171717",
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.2,
-          shadowRadius: 3,
-          marginBottom: 10,
-        }}
-        placeholder="Password"
-        defaultValue={userName}
-        onChangeText={(e) => SetUserName(e)}
+      <InputField value="Username" />
+      <InputField value="Password" />
+
+      <Button
+        //onPress={logIn}
+        //textStyle={{ fontFamily: "AvenirNextCondensed-Medium" }}
+        title="Sign in"
+        backgroundColor="black"
       />
     </View>
   );
