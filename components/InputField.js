@@ -20,7 +20,6 @@ const InputField = ({value}) => {
           fontFamily: "AvenirNextCondensed-Medium",
         }}
         placeholder={value}
-        defaultValue={value}
         onChangeText={(e) => SetUserName(e)}
       />
     );
