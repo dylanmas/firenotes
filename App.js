@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, Signup } from "./pages";
+import { Home, Login, Signup } from "./pages";
 
 export default function App() {
   return <Signup />;

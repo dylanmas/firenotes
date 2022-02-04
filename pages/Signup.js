@@ -1,7 +1,5 @@
-import { sendEmailVerification } from "@firebase/auth";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
-import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import { app } from "../firebase/config";
 import InputField from "../components/InputField";
 const Styles = StyleSheet.create({
@@ -14,7 +12,10 @@ const Styles = StyleSheet.create({
 });
 
 const Signup = () => {
-  const [userName, SetUserName] = useState("");
+  useEffect(() => {
+    console.log("e")
+  }, [])
+
   return (
     <View style={Styles.Container}>
       <Text
@@ -27,13 +28,13 @@ const Signup = () => {
         FireNotes
       </Text>
 
-      <InputField value="Username" />
-      <InputField value="Password" />
+      <InputField value="Email" />
+      <InputField value="Password" onTextChange={(e) => console.log(e)}/>
 
       <Button
         //onPress={logIn}
         //textStyle={{ fontFamily: "AvenirNextCondensed-Medium" }}
-        title="Sign in"
+        title="Sign up"
         backgroundColor="black"
       />
     </View>
