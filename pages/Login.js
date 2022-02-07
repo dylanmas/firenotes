@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { app } from "../firebase/config";
 import InputField from "../components/InputField";
+import { NavigationContainer } from "@react-navigation/native";
+
 import logo from "../assets/logo.png";
 const Styles = StyleSheet.create({
   Container: {
