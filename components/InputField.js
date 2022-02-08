@@ -20,7 +20,7 @@ const InputField = ({value}) => {
           fontFamily: "AvenirNextCondensed-Medium",
         }}
         placeholder={value}
-      
+        onChangeText={onChange}
       />
     );
 }
