@@ -42,8 +42,8 @@ const Login = () => {
         FireNotes
       </Text>
 
-      <InputField value="Email" />
-      <InputField value="Password" onTextChange={(e) => console.log(e)} />
+      <InputField value="Email" onChange={() => {}} />
+      <InputField value="Password" onChange={() => {}} />
 
       <TouchableOpacity
         style={{

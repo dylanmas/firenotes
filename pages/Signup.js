@@ -22,15 +22,15 @@ const Styles = StyleSheet.create({
   },
 });
 
-const Signup = () => {
+const Signup = ({ navigation }) => {
   useEffect(() => {
     console.log("e");
   }, []);
 
-  const onSignin = () => {
+  const onSignup = () => {
     console.log("e")
   }
-
+  
   return (
     <View style={Styles.Container}>
       <Image source={logo} style={{ width: 50, height: 70 }} />
@@ -45,10 +45,10 @@ const Signup = () => {
         FireNotes
       </Text>
 
-      <InputField value="Email" />
-      <InputField value="Password" onChange={(e) => console.log(e)}/>
+      <InputField value="Email" onChange={() => {}} />
+      <InputField value="Password" onChange={(e) => console.log(e)} />
 
-      <FormButton text="Sign in" event={onSignin} />
+      <FormButton text="Sign up" event={onSignup} />
 
       <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
         <Text
@@ -58,7 +58,7 @@ const Signup = () => {
             color: "#504801",
           }}
         >
-          No account?{" "}
+          Have an account?{" "}
         </Text>
         <TouchableOpacity
           style={{
@@ -73,8 +73,9 @@ const Signup = () => {
               fontSize: 18,
               fontFamily: "AvenirNextCondensed-Medium",
             }}
+            onPress={navigation.navigate("Home")}
           >
-            Create one here.
+            Login
           </Text>
         </TouchableOpacity>
       </View>
