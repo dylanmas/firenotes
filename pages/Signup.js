@@ -27,7 +27,7 @@ const Signup = () => {
     console.log("e");
   }, []);
 
-  const onSignin = () => {
+  const onSignup = () => {
     console.log("e")
   }
 
@@ -46,38 +46,9 @@ const Signup = () => {
       </Text>
 
       <InputField value="Email" />
-      <InputField value="Password" onChange={(e) => console.log(e)}/>
+      <InputField value="Password" />
 
-      <FormButton text="Sign in" event={onSignin} />
-
-      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-        <Text
-          style={{
-            fontSize: 18,
-            fontFamily: "AvenirNextCondensed-Medium",
-            color: "#504801",
-          }}
-        >
-          No account?{" "}
-        </Text>
-        <TouchableOpacity
-          style={{
-            textAlign: "center",
-          }}
-        >
-          <Text
-            style={{
-              fontWeight: "600",
-              fontStyle: "italic",
-              color: "purple",
-              fontSize: 18,
-              fontFamily: "AvenirNextCondensed-Medium",
-            }}
-          >
-            Create one here.
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <FormButton text="Sign up" event={onSignup} />
     </View>
   );
 };

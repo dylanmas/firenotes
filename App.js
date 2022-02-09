@@ -1,8 +1,11 @@
 import React from "react";
 import { Home, Login, Signup } from "./pages";
 
+const x = true;
 export default function App() {
-  return (
-    <Signup />
-  );
+  if (x === true) {
+    return <Signup />;
+  } else {
+    return <Login />;
+  }
 }
