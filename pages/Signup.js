@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
-  Button,
   StyleSheet,
   Text,
-  TextInput,
-  Touchable,
   TouchableOpacity,
   View,
   Image,
 } from "react-native";
-import { app } from "../firebase/config";
+import { auth, createUserWithEmailAndPassword } from "../firebase/config";
 import InputField from "../components/InputField";
 import FormButton from "../components/FormButton";
 import logo from "../assets/logo.png"
@@ -22,13 +19,18 @@ const Styles = StyleSheet.create({
   },
 });
 
-const Signup = ({ navigation }) => {
-  useEffect(() => {
-    console.log("e");
-  }, []);
+const Signup = () => {
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
 
   const onSignup = () => {
-    console.log("e")
+    createUserWithEmailAndPassword(auth, inputEmail, inputPassword).then(user => {
+      console.log(user)
+    }).catch(err => {
+      if(err) {
+        console.log(err.message)
+      }
+    })
   }
   
   return (
@@ -45,8 +47,8 @@ const Signup = ({ navigation }) => {
         FireNotes
       </Text>
 
-      <InputField value="Email" onChange={() => {}} />
-      <InputField value="Password" onChange={(e) => console.log(e)} />
+      <InputField value="Email" onChange={(e) => setInputEmail(e)} />
+      <InputField value="Password"  onChange={(e) => setInputPassword(e)}/>
 
       <FormButton text="Sign up" event={onSignup} />
 
@@ -73,7 +75,6 @@ const Signup = ({ navigation }) => {
               fontSize: 18,
               fontFamily: "AvenirNextCondensed-Medium",
             }}
-            onPress={navigation.navigate("Home")}
           >
             Login
           </Text>
