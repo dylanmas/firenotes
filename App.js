@@ -7,6 +7,7 @@ const Stack = createNativeStackNavigator();
 
 
 
+const x = true;
 export default function App() {
   return (
     <Login />
