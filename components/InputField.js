@@ -1,10 +1,11 @@
 import React from "react"
 import { TextInput, View } from "react-native";
 
-const InputField = ({value}, {onChange}) => {
+const InputField = ({value, onChange}) => {
     return (
       <TextInput
         style={{
+          
           height: 40,
           borderRadius: 5,
           backgroundColor: "#FFFCE0",
@@ -21,6 +22,7 @@ const InputField = ({value}, {onChange}) => {
         }}
         placeholder={value}
         onChangeText={onChange}
+        autoCapitalize="none"
       />
     );
 }

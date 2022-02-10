@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
-  Button,
   StyleSheet,
   Text,
-  TextInput,
-  Touchable,
   TouchableOpacity,
   View,
   Image,
 } from "react-native";
-import { app } from "../firebase/config";
+import { auth, createUserWithEmailAndPassword } from "../firebase/config";
 import InputField from "../components/InputField";
 import FormButton from "../components/FormButton";
 import logo from "../assets/logo.png"
@@ -23,14 +20,19 @@ const Styles = StyleSheet.create({
 });
 
 const Signup = () => {
-  useEffect(() => {
-    console.log("e");
-  }, []);
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
 
   const onSignup = () => {
-    console.log("e")
+    createUserWithEmailAndPassword(auth, inputEmail, inputPassword).then(user => {
+      console.log(user)
+    }).catch(err => {
+      if(err) {
+        console.log(err.message)
+      }
+    })
   }
-
+  
   return (
     <View style={Styles.Container}>
       <Image source={logo} style={{ width: 50, height: 70 }} />
@@ -45,10 +47,39 @@ const Signup = () => {
         FireNotes
       </Text>
 
-      <InputField value="Email" />
-      <InputField value="Password" />
+      <InputField value="Email" onChange={(e) => setInputEmail(e)} />
+      <InputField value="Password"  onChange={(e) => setInputPassword(e)}/>
 
       <FormButton text="Sign up" event={onSignup} />
+
+      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+        <Text
+          style={{
+            fontSize: 18,
+            fontFamily: "AvenirNextCondensed-Medium",
+            color: "#504801",
+          }}
+        >
+          Have an account?{" "}
+        </Text>
+        <TouchableOpacity
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontWeight: "600",
+              fontStyle: "italic",
+              color: "purple",
+              fontSize: 18,
+              fontFamily: "AvenirNextCondensed-Medium",
+            }}
+          >
+            Login
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

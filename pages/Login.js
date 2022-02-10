@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
 import {
-  Button,
   StyleSheet,
   Text,
-  TextInput,
-  Touchable,
   TouchableOpacity,
   View,
   Image,
 } from "react-native";
-import { app } from "../firebase/config";
+import { auth, signInWithEmailAndPassword } from "../firebase/config";
 import InputField from "../components/InputField";
-import { NavigationContainer } from "@react-navigation/native";
 
 import logo from "../assets/logo.png";
+import FormButton from "../components/FormButton";
 const Styles = StyleSheet.create({
   Container: {
     flex: 1,
@@ -24,9 +21,19 @@ const Styles = StyleSheet.create({
 });
 
 const Login = () => {
-  useEffect(() => {
-    console.log("e");
-  }, []);
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+
+  const onSignin = () => {
+    
+    signInWithEmailAndPassword(auth, inputEmail, inputPassword).then(user => {
+      console.log("Logged in")
+    }).catch(err => {
+      if(err){
+        console.log(err.message)
+      }
+    })
+  }
 
   return (
     <View style={Styles.Container}>
@@ -42,41 +49,10 @@ const Login = () => {
         FireNotes
       </Text>
 
-      <InputField value="Email" onTextChange={(e) => console.log(e)} />
-      <InputField value="Password" onTextChange={(e) => console.log(e)} />
+      <InputField value="Email" onChange={(e) => setInputEmail(e)} />
+      <InputField value="Password" onChange={(e) => setInputPassword(e)} />
 
-      <TouchableOpacity
-        style={{
-          fontWeight: "600",
-          color: "white",
-          fontSize: 25,
-          fontFamily: "AvenirNextCondensed-Medium",
-          margin: 10,
-          borderRadius: 5,
-          backgroundColor: "#FFFCE0",
-          width: "76%",
-          textAlign: "center",
-          display: "flex",
-          justifyContent: "center",
-          shadowColor: "#171717",
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.2,
-          shadowRadius: 3,
-        }}
-      >
-        <Text
-          style={{
-            color: "#504801",
-            textAlign: "center",
-            fontFamily: "AvenirNextCondensed-Medium",
-            fontWeight: "600",
-            fontSize: 20,
-            marginVertical: 5,
-          }}
-        >
-          Sign in
-        </Text>
-      </TouchableOpacity>
+      <FormButton text="Sign in" event={onSignin} />
 
       <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
         <Text
