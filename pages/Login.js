@@ -20,14 +20,14 @@ const Styles = StyleSheet.create({
   },
 });
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
 
   const onSignin = () => {
     
     signInWithEmailAndPassword(auth, inputEmail, inputPassword).then(user => {
-      console.log("Logged in")
+      navigation.navigate("Home")
     }).catch(err => {
       if(err){
         console.log(err.message)
@@ -68,6 +68,7 @@ const Login = () => {
           style={{
             textAlign: "center",
           }}
+          onPress={() => navigation.navigate("Signup")}
         >
           <Text
             style={{

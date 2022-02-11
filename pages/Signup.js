@@ -19,13 +19,13 @@ const Styles = StyleSheet.create({
   },
 });
 
-const Signup = () => {
+const Signup = ({navigation }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
 
   const onSignup = () => {
     createUserWithEmailAndPassword(auth, inputEmail, inputPassword).then(user => {
-      console.log(user)
+      navigation.navigate("Home")
     }).catch(err => {
       if(err) {
         console.log(err.message)
@@ -48,7 +48,7 @@ const Signup = () => {
       </Text>
 
       <InputField value="Email" onChange={(e) => setInputEmail(e)} />
-      <InputField value="Password"  onChange={(e) => setInputPassword(e)}/>
+      <InputField value="Password" onChange={(e) => setInputPassword(e)} />
 
       <FormButton text="Sign up" event={onSignup} />
 
@@ -66,6 +66,7 @@ const Signup = () => {
           style={{
             textAlign: "center",
           }}
+          onPress={() => navigation.navigate("Login")}
         >
           <Text
             style={{
