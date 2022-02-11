@@ -17,7 +17,6 @@ import logo from "../assets/logo.png";
 const Styles = StyleSheet.create({
   Container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FFEAB5",
   },
@@ -25,12 +24,32 @@ const Styles = StyleSheet.create({
 
 function Home() {
   return (
-    <View>
-     <Text>Home</Text>
+    <View style={Styles.Container}>
+      <Text
+        style={{
+          fontWeight: "700",
+          top: 25,
+          fontFamily: "AvenirNextCondensed-Medium",
+          fontSize: 25,
+          maxHeight: "10%"
+        }}
+      >
+        Home
+      </Text>
+      <View style={{
+        width: "100%",
+        height: "90%",
+        backgroundColor: "red",
+        top: 25,
+      }}>
+        <TouchableOpacity style={{
+          width: "10%",
+          height: "20%",
+          backgroundColor: "black",
+        }}>
+        </TouchableOpacity>
+      </View>
     </View>
-  <View style={Styles.Container}>
-    <Text>Home</Text>
-  </View>
   );
 }
 
