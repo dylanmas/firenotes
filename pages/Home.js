@@ -25,29 +25,23 @@ const Styles = StyleSheet.create({
 function Home() {
   return (
     <View style={Styles.Container}>
-      <Text
-        style={{
-          fontWeight: "700",
-          top: 25,
-          fontFamily: "AvenirNextCondensed-Medium",
-          fontSize: 25,
-          maxHeight: "10%"
-        }}
-      >
-        Home
-      </Text>
-      <View style={{
-        width: "100%",
-        height: "90%",
+      <Text style={{
+        fontSize: 45,
+        fontWeight: "bold",
         backgroundColor: "red",
-        top: 25,
+        width: "100%",
+        textAlign: "center"
+      }}>Home</Text>
+
+      <View style={{
+        backgroundColor: "blue",
+        width: "100%",
+        height: "95%",
       }}>
-        <TouchableOpacity style={{
-          width: "10%",
-          height: "20%",
-          backgroundColor: "black",
-        }}>
-        </TouchableOpacity>
+        <View style={{backgroundColor: "green", marginHorizontal: 10, width: "100%",
+       height: "100%"}}>
+
+        </View>
       </View>
     </View>
   );

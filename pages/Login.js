@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import { auth, signInWithEmailAndPassword } from "../firebase/config";
 import InputField from "../components/InputField";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/reducers/UserReducer";
 
 import logo from "../assets/logo.png";
 import FormButton from "../components/FormButton";
@@ -23,10 +25,13 @@ const Styles = StyleSheet.create({
 const Login = ({ navigation }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
+  const dispatch = useDispatch();
 
   const onSignin = () => {
     
     signInWithEmailAndPassword(auth, inputEmail, inputPassword).then(user => {
+      console.log(user)
+      dispatch(login(user.user))
       navigation.navigate("Home")
     }).catch(err => {
       if(err){

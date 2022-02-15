@@ -10,6 +10,9 @@ import { auth, createUserWithEmailAndPassword } from "../firebase/config";
 import InputField from "../components/InputField";
 import FormButton from "../components/FormButton";
 import logo from "../assets/logo.png"
+import { useDispatch } from "react-redux";
+import { signUp } from "../redux/reducers/UserReducer";
+
 const Styles = StyleSheet.create({
   Container: {
     flex: 1,
@@ -22,10 +25,12 @@ const Styles = StyleSheet.create({
 const Signup = ({navigation }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
+  const dispatch = useDispatch();
 
   const onSignup = () => {
     createUserWithEmailAndPassword(auth, inputEmail, inputPassword).then(user => {
       navigation.navigate("Home")
+      dispatch(signUp(user.user))
     }).catch(err => {
       if(err) {
         console.log(err.message)
