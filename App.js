@@ -14,7 +14,7 @@ export default function App() {
  
   return (
     <Provider store={store}>
-      {/* <NavigationContainer>
+      <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
             name="Signup"
@@ -38,8 +38,7 @@ export default function App() {
             }}
           />
         </Stack.Navigator>
-      </NavigationContainer> */}
-      <Home />
+      </NavigationContainer>
     </Provider>
   );
 }

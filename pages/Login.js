@@ -13,6 +13,7 @@ import { login } from "../redux/reducers/UserReducer";
 
 import logo from "../assets/logo.png";
 import FormButton from "../components/FormButton";
+import { fetchUser } from "../firebase/userfunctions";
 const Styles = StyleSheet.create({
   Container: {
     flex: 1,
@@ -33,6 +34,7 @@ const Login = ({ navigation }) => {
       console.log(user)
       dispatch(login(user.user))
       navigation.navigate("Home")
+      fetchUser(user.user.uid)
     }).catch(err => {
       if(err){
         console.log(err.message)
