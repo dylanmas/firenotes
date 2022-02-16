@@ -12,6 +12,7 @@ import FormButton from "../components/FormButton";
 import logo from "../assets/logo.png"
 import { useDispatch } from "react-redux";
 import { signUp } from "../redux/reducers/UserReducer";
+import {addUser} from "../firebase/userfunctions"
 
 const Styles = StyleSheet.create({
   Container: {
@@ -27,10 +28,11 @@ const Signup = ({navigation }) => {
   const [inputPassword, setInputPassword] = useState("");
   const dispatch = useDispatch();
 
-  const onSignup = () => {
-    createUserWithEmailAndPassword(auth, inputEmail, inputPassword).then(user => {
+  const onSignup = async () => {
+    createUserWithEmailAndPassword(auth, inputEmail, inputPassword).then(async (user) => {
       navigation.navigate("Home")
       dispatch(signUp(user.user))
+      await addUser(user.user)
     }).catch(err => {
       if(err) {
         console.log(err.message)
