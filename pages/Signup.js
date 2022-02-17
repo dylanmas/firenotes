@@ -30,8 +30,15 @@ const Signup = ({navigation }) => {
 
   const onSignup = async () => {
     createUserWithEmailAndPassword(auth, inputEmail, inputPassword).then(async (user) => {
+       const { uid, displayName, email } = user.user;
+       dispatch(
+         signUp({
+           uid,
+           displayName,
+           email,
+         })
+       );
       navigation.navigate("Home")
-      dispatch(signUp(user.user))
       await addUser(user.user)
     }).catch(err => {
       if(err) {

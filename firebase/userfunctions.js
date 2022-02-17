@@ -7,7 +7,9 @@ import { collection, addDoc,setDoc, db, doc} from "./config";
      try {
          const docRef = doc(db, "users", `${uid}`);
         const docData = await getDoc(docRef);
-        console.log(docData.data())
+        let notesCollection = await collection(db, "users", `${uid}/notes`);
+        console.log(notesCollection)
+
      } catch (err) {
          console.log(err)
      }
@@ -22,6 +24,8 @@ export const addUser = async (user) => {
            name: displayName || "",
            email: email
        })
+
+       
     } catch (err) {
         console.log(err)
     }

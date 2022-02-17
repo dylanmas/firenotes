@@ -31,8 +31,12 @@ const Login = ({ navigation }) => {
   const onSignin = () => {
     
     signInWithEmailAndPassword(auth, inputEmail, inputPassword).then(user => {
-      console.log(user)
-      dispatch(login(user.user))
+      const { uid, displayName, email } = user.user;
+      dispatch(login({
+        uid,
+        displayName,
+        email
+      }))
       navigation.navigate("Home")
       fetchUser(user.user.uid)
     }).catch(err => {
