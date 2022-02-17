@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Home, Login, Signup } from "./pages";
+import { Home, Login, Signup, NoteEdit } from "./pages";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { onAuthStateChanged, auth } from "./firebase/config";
@@ -37,7 +37,12 @@ export default function App() {
               headerShown: false,
             }}
           />
+
+          <Stack.Screen name="NoteEdit" component={NoteEdit} options={{
+            headerShown: false
+          }}/>
         </Stack.Navigator>
+        
       </NavigationContainer>
     </Provider>
   );
