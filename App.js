@@ -14,7 +14,7 @@ export default function App() {
  
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      {/* <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
             name="Signup"
@@ -38,12 +38,11 @@ export default function App() {
             }}
           />
 
-          <Stack.Screen name="NoteEdit" component={NoteEdit} options={{
-            headerShown: false
-          }}/>
+          <Stack.Screen name="NoteEdit" component={NoteEdit} />
         </Stack.Navigator>
         
-      </NavigationContainer>
+      </NavigationContainer> */}
+      <NoteEdit />
     </Provider>
   );
 }
