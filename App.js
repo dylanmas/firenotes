@@ -1,20 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Home, Login, Signup, NoteEdit } from "./pages";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { onAuthStateChanged, auth } from "./firebase/config";
 import { Provider } from "react-redux";
-import store from "./redux/store"
-
+import store from "./redux/store";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [user, setUser] = useState(null)
- 
+  const [user, setUser] = useState(null);
+
   return (
     <Provider store={store}>
-      {/* <NavigationContainer>
+      <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
             name="Signup"
@@ -38,11 +37,15 @@ export default function App() {
             }}
           />
 
-          <Stack.Screen name="NoteEdit" component={NoteEdit} />
+          <Stack.Screen
+            name="NoteEdit"
+            component={NoteEdit}
+            options={{
+              headerShown: false,
+            }}
+          />
         </Stack.Navigator>
-        
-      </NavigationContainer> */}
-      <NoteEdit />
+      </NavigationContainer>
     </Provider>
   );
 }
