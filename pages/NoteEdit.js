@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextInput, View, TouchableOpacity } from "react-native";
 import { FiArrowLeft } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { selectUser } from "../redux/reducers/UserReducer";
-import { fetchNotes } from "../firebase/userfunctions";
+import { setDocs, fetchNotes } from "../firebase/userfunctions";
 
 const NoteEdit = ({ navigation }) => {
   const [text, setText] = useState("");
 
   const user = useSelector(selectUser);
   const onBack = () => {
+    setDocs(user.uid, text);
     navigation.navigate("Home");
-    fetchNotes(user.uid);
   };
+
+  useEffect(() => {
+    fetchNotes(user.uid).then((snap) => {
+      setText(snap[0].note);
+    });
+  }, []);
 
   return (
     <View

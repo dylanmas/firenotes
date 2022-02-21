@@ -25,12 +25,29 @@ export const addNotes = (uid, data) => {
   }
 };
 
+export const setDocs = async (uid, data) => {
+  try {
+    const docRef = doc(db, "users", `${uid}`);
+    const colRef = collection(docRef, "notes");
+    await setDoc(doc(colRef, "note2"), {
+      note: data,
+    });
+    console.log("Note set Successfully");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const fetchNotes = async (uid) => {
   try {
     const docRef = doc(db, "users", `${uid}`);
     const colRef = collection(docRef, "notes");
     const snapshot = await getDocs(colRef);
-    return snapshot;
+    let docArray = [];
+    snapshot.forEach((doc) => {
+      docArray.push(doc.data());
+    });
+    return docArray;
   } catch (err) {
     console.log(err);
   }
