@@ -16,7 +16,9 @@ const NoteEdit = ({ navigation }) => {
 
   useEffect(() => {
     fetchNotes(user.uid).then((snap) => {
-      setText(snap[0].note);
+      if(snap.length >= 1){
+        setText(snap[0].note)
+      }
     });
   }, []);
 
